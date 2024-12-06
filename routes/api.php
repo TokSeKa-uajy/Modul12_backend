@@ -29,4 +29,11 @@ Route::middleware('auth:api')->group(function(){
     Route::delete('/contents/{id}',[App\Http\Controllers\Api\ContentController::class,'destroy']);
 
     Route::get('/contents/user/{id}',[App\Http\Controllers\Api\ContentController::class,'showContentbyUser']);
+
+    // Tampil semua video Watch Later milik user tertentu
+    Route::get('watch-laters', [App\Http\Controllers\Api\WatchLatersController::class, 'index']);
+    // Tambah video ke Watch Later
+    Route::post('watch-laters', [App\Http\Controllers\Api\WatchLatersController::class, 'store']);
+    // Hapus video dari Watch Later
+    Route::delete('watch-laters/{id}', [App\Http\Controllers\Api\WatchLatersController::class, 'destroy']);
 });
